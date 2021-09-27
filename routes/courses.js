@@ -10,10 +10,19 @@ const {
 const Course = require('../models/Course');
 const advancedResults = require('../middleware/advancedResults');
 
+const { protect, authorize } = require('../middleware/auth');
+
 const router = express.Router({ mergeParams: true });
 
-router.route('/').get(advancedResults(Course), getCourses).post(addCourse);
+router
+  .route('/')
+  .get(advancedResults(Course), getCourses)
+  .post(protect, authorize('publisher'), addCourse);
 
-router.route('/:id').get(getCourse).put(updateCourse).delete(deleteCourse);
+router
+  .route('/:id')
+  .get(getCourse)
+  .put(protect, authorize('publisher'), updateCourse)
+  .delete(protect, authorize('publisher', 'admin'), deleteCourse);
 
 module.exports = router;

@@ -5,6 +5,7 @@ const colors = require('colors');
 const path = require('path');
 const errorHandler = require('./middleware/error');
 const fileupload = require('express-fileupload');
+const cookieParser = require('cookie-parser');
 const connectDB = require('./config/db');
 
 // Load env files
@@ -16,14 +17,18 @@ dotenv.config({
 connectDB();
 
 // Route files
+const auth = require('./routes/auth');
+
 const bootcamps = require('./routes/bootcamps');
 const courses = require('./routes/courses');
-const { static } = require('express');
 
 const app = express();
 
 // Body parser
 app.use(express.json());
+
+// Cookie parser
+app.use(cookieParser());
 
 // Dev logging middleware
 if (process.env.NODE_ENV === 'development') {
@@ -36,6 +41,7 @@ app.use(fileupload());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes middleware
+app.use('/api/v1/auth', auth);
 app.use('/api/v1/bootcamps', bootcamps);
 app.use('/api/v1/courses', courses);
 
