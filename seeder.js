@@ -68,3 +68,5 @@ if (process.argv[2] === '-i') {
 } else if (process.argv[2] === '-d') {
   deleteData();
 }
+
+// POSTMAN_API_DOC=https://documenter.getpostman.com/view/10571402/UUxzC8iC
