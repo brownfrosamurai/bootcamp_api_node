@@ -3,9 +3,12 @@ const dotenv = require('dotenv');
 const morgan = require('morgan');
 const colors = require('colors');
 const path = require('path');
+const cookieParser = require('cookie-parser');
 const errorHandler = require('./middleware/error');
 const fileupload = require('express-fileupload');
-const cookieParser = require('cookie-parser');
+const mongoSanitize = require('express-mongo-sanitize');
+const helmet = require('helmet');
+const xss = require('xss-clean');
 const connectDB = require('./config/db');
 
 // Load env files
@@ -32,11 +35,21 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Dev logging middleware
-// if (process.env.NODE_ENV === 'development') {
-//   app.use(morgan('dev'));
-// }
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
 
+// File upload
 app.use(fileupload());
+
+// Sanitize data
+app.use(mongoSanitize());
+
+// Set security headers
+app.use(helmet());
+
+// Prevent cross site scripting
+app.use(xss());
 
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
