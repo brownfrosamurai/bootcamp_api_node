@@ -1,4 +1,4 @@
-# DevCamper API
+# BOOTCAMP API NODE
 
 > Backend API for Bootcamp_api_node application.
 
