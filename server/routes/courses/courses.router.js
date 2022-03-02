@@ -5,13 +5,13 @@ const {
   addCourse,
   updateCourse,
   deleteCourse,
-} = require('../controllers/courses');
+} = require('./courses.controller');
 
-const Course = require('../models/Course');
+const Course = require('../../models/Course');
 const router = express.Router({ mergeParams: true });
 
-const advancedResults = require('../middleware/advancedResults');
-const { protect, authorize } = require('../middleware/auth');
+const advancedResults = require('../../middleware/advancedResults');
+const { protect, authorize } = require('../../middleware/auth');
 
 router
   .route('/')

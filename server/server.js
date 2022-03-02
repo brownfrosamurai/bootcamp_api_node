@@ -20,11 +20,11 @@ const connectDB = require('./config/db');
 connectDB();
 
 // Route files
-const auth = require('./routes/auth');
-const users = require('./routes/users');
-const bootcamps = require('./routes/bootcamps');
-const courses = require('./routes/courses');
-const reviews = require('./routes/reviews');
+const auth = require('./routes/auth/auth.router');
+const users = require('./routes/users/users.router');
+const bootcamps = require('./routes/bootcamps/bootcamps.router');
+const courses = require('./routes/courses/courses.router');
+const reviews = require('./routes/reviews/reviews.router');
 
 const app = express();
 
