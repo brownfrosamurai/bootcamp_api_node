@@ -4,8 +4,8 @@
   "description": "bootcamp backend api",
   "main": "server.js",
   "scripts": {
-    "start": "NODE_ENV=production node server",
-    "dev": "nodemon server"
+    "start": "NODE_ENV=production node server/server.js",
+    "dev": "nodemon server/server.js"
   },
   "author": "meduna femi",
   "license": "MIT",

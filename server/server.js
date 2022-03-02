@@ -1,5 +1,4 @@
 const express = require('express');
-const dotenv = require('dotenv');
 const morgan = require('morgan');
 const colors = require('colors');
 const path = require('path');
@@ -12,14 +11,12 @@ const xss = require('xss-clean');
 const rateLimit = require('express-rate-limit');
 const hpp = require('hpp');
 const cors = require('cors');
-const connectDB = require('./config/db');
 
 // Load env files
-dotenv.config({
-  path: './config/config.env',
-});
+require('dotenv').config();
 
 // Connect to database
+const connectDB = require('./config/db');
 connectDB();
 
 // Route files
@@ -55,12 +52,12 @@ app.use(helmet());
 app.use(xss());
 
 // Rate limiting
-const limiter = rateLimit({
-  windowMs: 10 * 60 * 1000, //10 minutes
-  max: 100,
-});
+// const limiter = rateLimit({
+//   windowMs: 10 * 60 * 1000, //10 minutes
+//   max: 100,
+// });
 
-app.use(limiter);
+// app.use(limiter);
 
 // Prevent http param pollution
 app.use(hpp());
@@ -81,7 +78,7 @@ app.use('/api/v1/reviews', reviews);
 // Error handler
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 
 const server = app.listen(
   PORT,
@@ -92,6 +89,6 @@ const server = app.listen(
 
 //  Handle unhandled promise rejection
 process.on('unhandledRejection', (err, promise) => {
-  console.log(`Error: ${err.message}`.red.bold);
+  console.log(`Error: ${err}`.red.bold);
   server.close(() => process.exit(1));
 });

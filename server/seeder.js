@@ -4,7 +4,7 @@ const colors = require('colors');
 const dotenv = require('dotenv');
 
 // Load env variables
-dotenv.config({ path: './config/config.env' });
+dotenv.config();
 
 const Bootcamp = require('./models/Bootcamp');
 const Course = require('./models/Course');
