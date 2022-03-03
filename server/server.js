@@ -36,7 +36,7 @@ app.use(cookieParser());
 
 // Dev logging middleware
 if (process.env.NODE_ENV === 'development') {
-  app.use(morgan('dev'));
+  app.use(morgan('combined'));
 }
 
 // File upload
