@@ -1,8 +1,8 @@
 const Bootcamp = require('../../models/Bootcamp');
-const ErroResponse = require('../../utils/errorResponse');
-const geocoder = require('../../utils/geocoder');
+const ErroResponse = require('../../utils/erroresponse.utils');
+const geocoder = require('../../utils/geocoder.utils');
 const path = require('path');
-const asyncHandler = require('../../middleware/async');
+const asyncHandler = require('../../middleware/async.middleware');
 
 // @desc    Get all bootcamps
 // @route   GET /api/v1/bootcamps

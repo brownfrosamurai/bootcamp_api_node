@@ -1,7 +1,7 @@
 const User = require('../../models/User');
-const ErroResponse = require('../../utils/errorResponse');
-const asyncHandler = require('../../middleware/async');
-const sendEmail = require('../../utils/sendEmail');
+const ErroResponse = require('../../utils/erroresponse.utils');
+const asyncHandler = require('../../middleware/async.middleware');
+const sendEmail = require('../../utils/sendmail.utils');
 const crypto = require('crypto');
 
 // @desc    Register User

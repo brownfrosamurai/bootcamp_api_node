@@ -17,21 +17,22 @@ mongoose.connect(process.env.MONGO_URI, {
 });
 
 // Read JSON files
+const dataPath = __dirname.slice(0, -6)
 
 const bootcamps = JSON.parse(
-  fs.readFileSync(`${__dirname}/_data/bootcamps.json`, 'utf-8')
+  fs.readFileSync(`${dataPath}/_data/bootcamps.json`, 'utf-8')
 );
 
 const courses = JSON.parse(
-  fs.readFileSync(`${__dirname}/_data/courses.json`, 'utf-8')
+  fs.readFileSync(`${dataPath}/_data/courses.json`, 'utf-8')
 );
 
 const users = JSON.parse(
-  fs.readFileSync(`${__dirname}/_data/users.json`, 'utf-8')
+  fs.readFileSync(`${dataPath}/_data/users.json`, 'utf-8')
 );
 
 const reviews = JSON.parse(
-  fs.readFileSync(`${__dirname}/_data/reviews.json`, 'utf-8')
+  fs.readFileSync(`${dataPath}/_data/reviews.json`, 'utf-8')
 );
 
 // import into DB
@@ -68,5 +69,3 @@ if (process.argv[2] === '-i') {
 } else if (process.argv[2] === '-d') {
   deleteData();
 }
-
-// POSTMAN_API_DOC=https://documenter.getpostman.com/view/10571402/UUxzC8iC

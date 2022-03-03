@@ -10,8 +10,8 @@ const {
 const User = require('../../models/User');
 const router = express.Router({ mergeParams: true });
 
-const advancedResults = require('../../middleware/advancedResults');
-const { protect, authorize } = require('../../middleware/auth');
+const advancedResults = require('../../middleware/advancedresults.middleware');
+const { protect, authorize } = require('../../middleware/auth.middleware');
 
 router.use(protect);
 router.use(authorize('admin'));
