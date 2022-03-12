@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=production node server/src/server.js",
-    "dev": "nodemon server/src/server.js"
+    "deploy": "npm start --prefix server",
+    "watch": "nodemon server/src/server.js"
   },
   "repository": {
     "type": "git",

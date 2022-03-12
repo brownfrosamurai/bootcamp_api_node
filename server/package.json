@@ -4,11 +4,16 @@
   "description": "bootcamp backend api",
   "main": "server.js",
   "scripts": {
+    "test": "jest --detectOpenHandles",
+    "test-watch": "jest --watchAll",
     "start": "NODE_ENV=production node src/server.js",
-    "dev": "nodemon src/server.js"
+    "watch": "nodemon src/server.js"
   },
   "author": "meduna femi",
   "license": "MIT",
+  "jest": {
+    "testEnvironment": "node"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
